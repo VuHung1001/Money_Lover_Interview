@@ -84,7 +84,7 @@ function findUniquePairs (array, n) {
 
     array = Array.from(new Set(array)).sort(); // remove duplicate numbers and sort all elements
 
-    function recursiveByN (startIndex, uniqueNumbersPair) {
+    function recursiveFunc (startIndex, uniqueNumbersPair) {
         for (let i = startIndex; i < array.length; i++) {
             const currentNum = array[i];
 
@@ -108,8 +108,8 @@ function findUniquePairs (array, n) {
 
                 // if current index is the last index
                 if (i === array.length - 1) {
-                    // re-run recursiveByN with increased startIndex and first element of uniqueNumbersPair
-                    recursiveByN(startIndex + 1, [uniqueNumbersPair[0]]);
+                    // re-run recursiveFunc with increased startIndex and first element of uniqueNumbersPair
+                    recursiveFunc(startIndex + 1, [uniqueNumbersPair[0]]);
                     break;
                 }
             }
@@ -118,9 +118,9 @@ function findUniquePairs (array, n) {
 
     for (let i = 0; i < array.length; i++) {
         const num = array[i];
-        // call recursiveByN from next element of array 
+        // call recursiveFunc with next element of array 
         // and unique numbers pair has first element is current number
-        recursiveByN(i + 1, [num]); 
+        recursiveFunc(i + 1, [num]); 
     }
 
     console.log(resultArr.map(pair => pair.join(' & ')));
